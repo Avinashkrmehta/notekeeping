@@ -13,6 +13,9 @@
                        <div class="links-btn-group">                
                         <%= link_to "Edit", edit_noteskeep_path(@note),class: "btn-custom"%>
                        <%= link_to "Delete",noteskeep_path(@note),method: :delete, data: { confirm: "Are you sure?"},class: "btn-custom"%>
+                        <%= link_to "Share", edit_noteskeep_path(@note),class: "btn-custom"%>
+                        <h5 align="center">  <%= link_to "BACK",noteskeeps_path ,class: "btn-custom2"%>  </h5>
+                        
                     </div>
     	    </div>
         </div>
@@ -26,6 +29,10 @@
                     <div class="reviews">
                       <h1> <%= @note.title %></h1>
                     <p><%= @note.description %></p>
+                    <div class="links-btn-group"> 
+                    <h5 align="center">  <%= link_to "BACK",noteskeeps_path ,class: "btn-custom2"%>  </h5>
+                    
+                    </div>
             </div>
         </div>
     </div>  
@@ -42,6 +49,7 @@
                            <p> <%= @note.description %></p>
                        <div class="links-btn-group">                
                         <%= link_to "Edit", edit_noteskeep_path(@note),class: "btn-custom"%>
+                        <h5 align="center">  <%= link_to "BACK",noteskeeps_path ,class: "btn-custom2"%>  </h5>
                     </div>
     	    </div>
         </div>
@@ -57,6 +65,7 @@
                            <p> <%= @note.description %></p>
                        <div class="links-btn-group">                
                        <%= link_to "Delete",noteskeep_path(@note),method: :delete, data: { confirm: "Are you sure?"},class: "btn-custom"%>
+                       <h5 align="center">  <%= link_to "BACK",noteskeeps_path ,class: "btn-custom2"%>  </h5>
                     </div>
     	    </div>
         </div>
