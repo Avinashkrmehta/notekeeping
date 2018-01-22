@@ -1,27 +1,33 @@
 <div class="row">
     	<div class="col-md-6 col-md-offset-3">
 <div class="reviews">
-<h1> Notes INDEX PAge</h1>
+<h1 align="center"><b>Notes</b></h1>
 </div>
     </div>
 </div>
 <div class="row">
     	<div class="col-md-6 col-md-offset-3">
 	         <div class="note-info">
+	                    <div class="row">
+                         <div class="col-md-4"><h4><b><%="TITLE OF NOTE"%></d></h4></div>
+                         <div class="col-md-4"><h4><b><%="DATE OF CREATION" %></d></h4></div>
+                         </div>
+	             
+	             
+                    <% @notes.each do |note|%>
+                         <div class="row">
+                         <div class="col-md-4"><h4><b><%=link_to note.title, noteskeep_path(note)%></d></h4></div>
+                         <div class="col-md-4"><h4><b><%=note.created_at.strftime("%Y-%m-%d") %></d></h4></div>
+                         </div>
+                    <%end%>
 
-
-<% @notes.each do |note|%>
-        
-        <h2><%=link_to note.title, noteskeep_path(note)%></h2>
-<%end%>
-
-<div class="links-btn-group">
-  <%= link_to "ADD Note",new_noteskeep_path ,class: "btn-custom"%>  
-</div> 
+                <div class="links-btn-group">
+                <h3 align="center">  <%= link_to "ADD Note",new_noteskeep_path ,class: "btn-custom"%>  </h3>
+                </div> 
 
 	    </div>
     </div>
-    
-   
-    
 </div>
+
+
+ 

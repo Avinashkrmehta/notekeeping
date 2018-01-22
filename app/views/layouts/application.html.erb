@@ -21,15 +21,15 @@
   		
 
   		<ul class="nav navbar-nav">
-  		  
+
 
             <% if user_signed_in? %>
-        			<li><%= link_to "Add Note", new_noteskeep_path%></li>
+        			<li><%= link_to "Add Note", new_noteskeep_path %></li>
         		<%end%>
 
-  		  
-  		  
-
+  		  </ul>
+  		 <ul class="nav navbar-nav navbar-right">
+        
   			<% if user_signed_in? %>
   			<li>
   				<%= link_to "Sign_Out",  destroy_user_session_path, method: :delete%>
@@ -43,6 +43,7 @@
         		<li>Logged in as <strong><%= current_user.email %></strong></li>
         <%end%>
   		</ul>
+
   	</div>
   	</div>
   </nav>
@@ -62,7 +63,7 @@
     setTimeout(function () {   
       $('#flash').remove();  
       $('#notice').remove();
-    }, 10000); 
+    }, 13000); 
   });
 </script>
 

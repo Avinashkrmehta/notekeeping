@@ -1,12 +1,18 @@
+
+<div class="reviews">
 <%= simple_form_for @note do |f| %>
-<%= f.input :title, label: "Note Title" %>
-<%= f.input :description %>
-<%= select_tag "user_shared_to", options_from_collection_for_select(@user, "id", "email"),prompt: "Select something" %>
-<%= hidden_field_tag "user_shared_by",current_user.id %>
-<%= select_tag "share_type", options_for_select([ "read", "update","delete","share" ]),prompt: "Select" %>
-<%= f.button :submit %>
+ <h4> <b><%= f.input :title, label: "Note Title" %></b></h4>
+ <h4><b><%="Description"%></b><%= f.input :description,label: false,:input_html => {:rows => 10} %></h4>
+     <%= hidden_field_tag "user_shared_by",current_user.id %>
+    <h4><b><%= "Tagging User"%>&nbsp&nbsp&nbsp&nbsp</b><%= select_tag "user_shared_to", options_from_collection_for_select(@user, "id", "email"),prompt: "Select something" %></h4>
+     <h4><b><%="Tagging Type" %>&nbsp&nbsp&nbsp&nbsp</b><%= select_tag "share_type", options_for_select([ "read", "update","delete","share" ]),prompt: "Select" %></h4>
+ 
+
+         <div class="links-btn-group">
+              <h3  align="center">   <%= f.button :submit ,"create" ,class: "btn-custom" %></h3>
+        </div>
 <% end %>
 
-
+ </div>
 
 
