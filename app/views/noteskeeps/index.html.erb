@@ -1,0 +1,27 @@
+<div class="row">
+    	<div class="col-md-6 col-md-offset-3">
+<div class="reviews">
+<h1> Notes INDEX PAge</h1>
+</div>
+    </div>
+</div>
+<div class="row">
+    	<div class="col-md-6 col-md-offset-3">
+	         <div class="note-info">
+
+
+<% @notes.each do |note|%>
+        
+        <h2><%=link_to note.title, noteskeep_path(note)%></h2>
+<%end%>
+
+<div class="links-btn-group">
+  <%= link_to "ADD Note",new_noteskeep_path ,class: "btn-custom"%>  
+</div> 
+
+	    </div>
+    </div>
+    
+   
+    
+</div>

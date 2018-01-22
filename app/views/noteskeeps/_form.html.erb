@@ -1,0 +1,12 @@
+<%= simple_form_for @note do |f| %>
+<%= f.input :title, label: "Note Title" %>
+<%= f.input :description %>
+<%= select_tag "user_shared_to", options_from_collection_for_select(@user, "id", "email"),prompt: "Select something" %>
+<%= hidden_field_tag "user_shared_by",current_user.id %>
+<%= select_tag "share_type", options_for_select([ "read", "update","delete","share" ]),prompt: "Select" %>
+<%= f.button :submit %>
+<% end %>
+
+
+
+

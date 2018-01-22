@@ -1,0 +1,44 @@
+<% if user_signed_in? %>
+
+       <% @share.each do |share| %>
+       
+       <%if share.user_shared_by == current_user.id %>
+       <%= "Actual"%>
+         <h1> <%= @note.title %></h1>
+       <%= @note.description %>
+       <%= link_to "Edit", edit_noteskeep_path(@note)%>
+       <%= link_to "Delete",noteskeep_path(@note),method: :delete, data: { confirm: "Are you sure?"}%>
+       
+       <%elsif share.user_shared_to == current_user.id and share.share_type == "read"  %>
+        <%= "read"%>
+          <h1> <%= @note.title %></h1>
+       <%= @note.description %>
+       
+       <%elsif share.user_shared_to == current_user.id and share.share_type == "update"  %>
+       <%= "edit"%>
+        <h1> <%= @note.title %></h1>
+       <%= @note.description %>
+       <%= link_to "Edit", edit_noteskeep_path(@note)%>
+       
+       <%elsif share.user_shared_to == current_user.id and share.share_type == "delete"  %>
+       <%= "delete"%>
+         <h1> <%= @note.title %></h1>
+        <%= @note.description %>
+        <%= link_to "Delete",noteskeep_path(@note),method: :delete, data: { confirm: "Are you sure?"}%>
+       <%elsif share.user_shared_to == current_user.id and share.share_type == "share"  %>
+       <%= "share"%>
+         <h1> <%= @note.title %></h1>
+         <%= @note.description %>
+         
+        <%= form_tag(:controller => "noteskeeps", :action => "share_note") do %> 
+            <%= hidden_field_tag "notekeep_id",@note.id %>
+            <%= select_tag "user_shared_to", options_from_collection_for_select(@user, "id", "email"),prompt: "Select something" %>
+            <%= hidden_field_tag "user_shared_by",current_user.id %>
+            <%= select_tag "share_type", options_for_select([ "read", "update","delete","share" ]),prompt: "Select" %>
+            < <%= submit_tag "share" %> 
+            <% end %>
+        
+       <%end%>
+       
+    <%end%>
+ <%end%>

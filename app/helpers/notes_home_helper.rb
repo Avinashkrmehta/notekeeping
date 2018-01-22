@@ -1,0 +1,2 @@
+module NotesHomeHelper
+end

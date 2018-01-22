@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Notekeeping</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <nav class="navbar navbar-default">
+  	<div clas="container-fluid">
+
+  		<div class="navbar-header">
+  		  <% if user_signed_in? %>
+  			<%= link_to "Note-Keeping",noteskeeps_path, class: "navbar-brand" %> 
+  			<%else%>
+  			<%= link_to "Note-Keeping",root_path, class: "navbar-brand" %> 
+  			<%end%>
+  		
+
+  		<ul class="nav navbar-nav">
+  		  
+
+            <% if user_signed_in? %>
+        			<li><%= link_to "Add Note", new_noteskeep_path%></li>
+        		<%end%>
+
+  		  
+  		  
+
+  			<% if user_signed_in? %>
+  			<li>
+  				<%= link_to "Sign_Out",  destroy_user_session_path, method: :delete%>
+  			</li>
+
+  			<% else %>
+  			<li> <%= link_to "Log In", new_user_session_path %></li>
+  			<li><%= link_to "Sign UP", new_user_registration_path%></li>
+  			<% end %>
+		    <% if user_signed_in? %>
+        		<li>Logged in as <strong><%= current_user.email %></strong></li>
+        <%end%>
+  		</ul>
+  	</div>
+  	</div>
+  </nav>
+    
+<% if notice %>
+  <p class="alert alert-success" id ="notice"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger" id ="flash"><%= alert %></p>
+<% end %>
+
+    <%= yield %>
+  </body>
+</html>
+<script>
+  $(document).ready(function () {   
+    setTimeout(function () {   
+      $('#flash').remove();  
+      $('#notice').remove();
+    }, 10000); 
+  });
+</script>
+
